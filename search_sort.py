@@ -18,10 +18,30 @@ def counting_sort(lst, max=100):
 # Question 2
 
 
-def ternary_search(lst, target):
-    index = -1
+def ternary_search(lst, target, start = -1, end = -1):
+    start = 0 if start == -1 else start
+    end = len(lst) if end == -1 else end
+    length = end - start + 1
 
-    return index
+    if length < 3:
+        return linear_search(lst, target)
+
+    third = length // 3
+    point1 = start + third
+    point2 = point1 + third
+
+    if target < point1:
+        return ternary_search(lst, target, start, point1 - 1)
+    elif target < point2:
+        return ternary_search(lst, target, point1, point2 - 1)
+    return ternary_search(lst, target, point2, end)
+
+
+def linear_search(lst, target):
+    for i, e in enumerate(lst):
+        if e == target:
+            return i
+    return -1
 
 
 # Question 3
@@ -70,9 +90,28 @@ def sorted_list(n=10):
 # Q1
 
 print("Testing Q1")
+print()
 
 test_list = random_list()
 print(test_list)
 print(counting_sort(test_list))
 
+print()
 print("Q1 Test Done")
+
+# Q2
+
+print()
+print("Testing Q2")
+print()
+
+test_list = sorted_list()
+print(test_list)
+print(ternary_search(test_list, test_list[5]))
+print(ternary_search(test_list, test_list[6]))
+print(ternary_search(test_list, test_list[7]))
+print(ternary_search(test_list, test_list[8]))
+print(ternary_search(test_list, 0))
+
+print()
+print("Q2 Test Done")
