@@ -48,9 +48,11 @@ def linear_search(lst, target):
 
 
 def insertion_sort(lst):
-    sorted_lst = None
-
-    return sorted_lst
+    for i in range(1, len(lst)):
+        ci = i
+        while ci > 0 and lst[ci] < lst[ci - 1]:
+            lst[ci], lst[ci - 1] = lst[ci - 1], lst[ci]
+            ci -= 1
 
 
 # Question 4
@@ -115,3 +117,18 @@ print(ternary_search(test_list, 0))
 
 print()
 print("Q2 Test Done")
+
+
+# Q3
+
+print()
+print("Testing Q3")
+print()
+
+test_list = random_list()
+print(test_list)
+insertion_sort(test_list)
+print(test_list)
+
+print()
+print("Q3 Test Done")
