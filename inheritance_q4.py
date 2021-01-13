@@ -1,64 +1,66 @@
 import math
+
+
 class Shape:
+    def __init__(self, color="black", filled=False):
+        self.color = color
+        self.filled = filled
 
-  def __init__(self, color='black', filled=False):
-    self.color = color
-    self.filled = filled
+    def get_color(self):
+        return self.color
 
-  def get_color(self):
-    # TODO
+    def set_color(self, color):
+        self.color = color
 
-  def set_color(self, color):
-    # TODO
+    def get_filled(self):
+        return self.filled
 
-  def get_filled(self):
-    # TODO
+    def set_filled(self, filled):
+        self.filled = filled
 
-  def set_filled(self, filled):
-    # TODO
 
 class Rectangle(Shape):
+    def __init__(self, height, width):
+        super().__init__()
+        self.height = height
+        self.width = width
 
-  def __init__(self, height, width):
-    Shape.__init__(self)
-    self.height = height
-    self.width = width
+    def get_height(self):
+        return self.height
 
-  def get_height(self):
-    # TODO
+    def set_length(self, height):
+        self.height = height
 
-  def set_length(self, height):
-    # TODO
+    def get_width(self):
+        return self.width
 
-  def get_width(self):
-    # TODO
+    def set_width(self, width):
+        self.width = width
 
-  def set_width(self, width):
-    # TODO
+    def get_area(self):
+        return self.width * self.height
 
-  def get_area(self):
-    # TODO
-
-  def get_perimeter(self):
-    # TODO
+    def get_perimeter(self):
+        return 2 * (self.width + self.height)
 
 
 class Circle(Shape):
-  def __init__(self, radius):
-    Shape.__init__(self)
-    self.radius = radius
+    def __init__(self, radius):
+        super().__init__()
+        self.radius = radius
 
-  def get_radius(self):
-    # TODO
+    def get_radius(self):
+        return self.radius
 
-  def set_radius(self, radius):
-    # TODO
+    def set_radius(self, radius):
+        self.radius = radius
 
-  def get_area(self):
-    # TODO
+    def get_area(self):
+        return math.pi * self.radius ** 2
 
-  def get_perimeter(self):
-    # TODO
+    def get_perimeter(self):
+        return 2 * math.pi * self.radius
+
 
 r1 = Rectangle(10.5, 2.5)
 
