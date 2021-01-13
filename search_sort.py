@@ -1,6 +1,7 @@
 import random
 
 # Question 1
+# Time complexity: O(n + k) where k is maximum possible element
 
 
 def counting_sort(lst, max=100):
@@ -15,10 +16,12 @@ def counting_sort(lst, max=100):
 
     return sorted_lst
 
+
 # Question 2
+# Time complexity O(log N)
 
 
-def ternary_search(lst, target, start = -1, end = -1):
+def ternary_search(lst, target, start=-1, end=-1):
     start = 0 if start == -1 else start
     end = len(lst) if end == -1 else end
     length = end - start + 1
@@ -45,6 +48,7 @@ def linear_search(lst, target):
 
 
 # Question 3
+# Tine complexity: O(N^2)
 
 
 def insertion_sort(lst):
@@ -56,9 +60,10 @@ def insertion_sort(lst):
 
 
 # Question 4
+# Tine complexity: O(log N)
 
 
-def nary_search(lst, target, n, start = -1, end = -1):
+def nary_search(lst, target, n, start=-1, end=-1):
     start = 0 if start == -1 else start
     end = (len(lst) - 1) if end == -1 else end
     length = end - start + 1
@@ -84,6 +89,7 @@ def nary_search(lst, target, n, start = -1, end = -1):
 
 
 # Question 5
+# Time complexity: O(N / jump + log(jump))
 
 
 def jumping_binary_search(sorted_lst, target, jump):
