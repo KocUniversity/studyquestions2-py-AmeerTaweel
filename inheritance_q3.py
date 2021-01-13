@@ -1,11 +1,12 @@
 # Inheritance Q3
 
+
 class A(object):
     def one(self):
-        return 'A'
+        return "A"
 
     def two(self):
-        return 'B'
+        return "B"
 
 
 class B(A):
