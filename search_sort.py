@@ -58,10 +58,27 @@ def insertion_sort(lst):
 # Question 4
 
 
-def nary_search(lst, target, n):
-    index = -1
+def nary_search(lst, target, n, start = -1, end = -1):
+    start = 0 if start == -1 else start
+    end = len(lst) if end == -1 else end
+    length = end - start + 1
 
-    return index
+    if length < n:
+        return linear_search(lst, target)
+
+    nth = length // n
+    points = [start]
+    for i in range(1, n):
+        points.append(start + i * nth)
+    points.append(end)
+
+    for i, point in enumerate(points):
+        if i == 0:
+            continue
+        if target < point:
+            return nary_search(lst, target, n, points[i - 1], point - 1)
+
+    return -1
 
 
 # Question 5
@@ -132,3 +149,22 @@ print(test_list)
 
 print()
 print("Q3 Test Done")
+
+# Q4
+
+print()
+print("Testing Q4")
+print()
+
+test_list = sorted_list(50)
+print(test_list)
+print(ternary_search(test_list, test_list[5], 10))
+print(ternary_search(test_list, test_list[6], 10))
+print(ternary_search(test_list, test_list[11], 10))
+print(ternary_search(test_list, test_list[12], 10))
+print(ternary_search(test_list, test_list[49], 10))
+print(ternary_search(test_list, test_list[0], 10))
+print(ternary_search(test_list, 0, 10))
+
+print()
+print("Q4 Test Done")
