@@ -60,7 +60,7 @@ def insertion_sort(lst):
 
 def nary_search(lst, target, n, start = -1, end = -1):
     start = 0 if start == -1 else start
-    end = len(lst) if end == -1 else end
+    end = (len(lst) - 1) if end == -1 else end
     length = end - start + 1
 
     if length < n:
@@ -72,10 +72,12 @@ def nary_search(lst, target, n, start = -1, end = -1):
         points.append(start + i * nth)
     points.append(end)
 
-    for i, point in enumerate(points):
-        if i == 0:
+    for point in points:
+        if point == 0:
             continue
-        if target < point:
+        if target == lst[point]:
+            return point
+        elif target < lst[point]:
             return nary_search(lst, target, n, points[i - 1], point - 1)
 
     return -1
@@ -85,9 +87,19 @@ def nary_search(lst, target, n, start = -1, end = -1):
 
 
 def jumping_binary_search(sorted_lst, target, jump):
-    index = -1
+    i = 0
 
-    return index
+    while sorted_lst[i] < target:
+        i += jump
+        if i >= len(sorted_lst):
+            i = len(sorted_lst) - 1
+            break
+
+    start = (i - jump) if i > 0 else 0
+    end = i
+
+    # I'm too lazy to implement binary search in a new method.
+    return nary_search(sorted_lst, target, 2, start, end)
 
 
 # This function generates lists of random integers, you can use it to test your sorting code if you wish
@@ -168,3 +180,22 @@ print(ternary_search(test_list, 0, 10))
 
 print()
 print("Q4 Test Done")
+
+# Q5
+
+print()
+print("Testing Q5")
+print()
+
+test_list = sorted_list(50)
+print(test_list)
+print(jumping_binary_search(test_list, test_list[5], 10))
+print(jumping_binary_search(test_list, test_list[17], 10))
+print(jumping_binary_search(test_list, test_list[18], 10))
+print(jumping_binary_search(test_list, test_list[31], 10))
+print(jumping_binary_search(test_list, test_list[49], 10))
+print(jumping_binary_search(test_list, test_list[0], 10))
+print(jumping_binary_search(test_list, 0, 10))
+
+print()
+print("Q5 Test Done")
