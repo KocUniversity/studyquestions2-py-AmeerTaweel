@@ -53,6 +53,10 @@ A polygon is a closed figure with 3 or more sides. We have a class called `Polyg
 
 What is the output for the code in the "inheritance_q3.py"? Why is this code working?
 
+Answer:
+
+Easy stuff, this is because the class B inherits the method one() from class A, and overrides two() to call one().
+
 ## Q4: Shape Magic
 
 Complete the class functionality given in the "inheritance_q4.py" file to create `Rectangle` and `Circle` as sublclasses of the `Shape` class.
@@ -89,11 +93,11 @@ class Dog(Animal):
 
   def speak(self):
     return self.name + " says WOOF"
-            
+
 class Cat(Animal):
   def __init__(self, name):
     Animal.__init__(self, name)
-      
+
   def speak(self):
     return self.name + " says MEOW"
 
